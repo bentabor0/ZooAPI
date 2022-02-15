@@ -1,8 +1,8 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-export const ZooSchema = new Schema({
+const ZooSchema = new Schema({
     zooName: {
         type: String,
         required: 'Enter a zoo name'

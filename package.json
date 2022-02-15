@@ -1,25 +1,17 @@
 {
-  "name": "zoo-api",
-  "version": "1.0.0",
-  "description": "node js api for zoo project",
-  "main": "index.js",
+  "name": "myapp",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "start": "nodemon ./index.js --exec babel-node -e js"
+    "start": "node ./bin/www"
   },
-  "author": "Ben Tabor",
-  "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.19.1",
-    "cookie-parser": "^1.4.6",
+    "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
-    "express": "^4.17.2",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
     "mongodb": "^4.3.1",
     "mongoose": "^6.2.1",
-    "nodemon": "^2.0.15"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-0": "^6.24.1"
+    "morgan": "~1.9.1"
   }
 }

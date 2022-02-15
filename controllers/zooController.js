@@ -1,9 +1,33 @@
-import mongoose from "mongoose";
-import { ZooSchema } from '../models/crmModel';
+const mongoose = require("mongoose");
+// const ZooSchema = require('../models/zooModel');
+const Schema = mongoose.Schema;
+
+const ZooSchema = new Schema({
+    zooName: {
+        type: String,
+        required: 'Enter a zoo name'
+    },
+    guestCount: {
+        type: Number
+    },
+    animalCount: {
+        type: Number
+    },
+    animals: {
+        type: Array
+    },
+    guests: {
+        type: Array
+    },
+    createdDate: {
+        type: Date,
+        default: Date.now()
+    }
+});
 
 const Zoo = mongoose.model('Zoo', ZooSchema);
 
-export const addNewZoo = (req, res) => {
+const addNewZoo = (req, res) => {
     let newZoo = new Zoo(req.body);
 
     newZoo.save((err, zoo) => {
@@ -14,7 +38,7 @@ export const addNewZoo = (req, res) => {
     });
 }
 
-export const getZoos = (req, res) => {
+const getZoos = (req, res) => {
     Zoo.find({}, (err, zoo) => {
         if (err) {
             res.send(err);
@@ -23,7 +47,7 @@ export const getZoos = (req, res) => {
     });
 }
 
-export const getZooWithID = (req, res) => {
+const getZooWithID = (req, res) => {
     Zoo.findById(req.params.zooID, (err, zoo) => {
         if (err) {
             res.send(err);
@@ -32,7 +56,7 @@ export const getZooWithID = (req, res) => {
     });
 }
 
-export const updateZoo = (req, res) => {
+const updateZoo = (req, res) => {
     Zoo.findOneAndUpdate({ _id: req.params.zooID }, req.body, { new: true, useFindAndModify: false }, (err, zoo) => {
         if (err) {
             res.send(err);
@@ -41,7 +65,7 @@ export const updateZoo = (req, res) => {
     });
 }
 
-export const deleteZoo = (req, res) => {
+const deleteZoo = (req, res) => {
     Zoo.remove({ _id: req.params.zooID }, (err, zoo) => {
         if (err) {
             res.send(err);
@@ -49,4 +73,3 @@ export const deleteZoo = (req, res) => {
         res.json({message: 'successfully deleted zoo'});
     });
 }
-
